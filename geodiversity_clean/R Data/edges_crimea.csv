@@ -1,0 +1,28 @@
+Source,Target,Type,Id,Label,Weight
+Ukraine,Poland,Undirected,834,,6
+Russia,Ukraine,Undirected,835,,2
+Russia,Ukraine(Occupied Luhansk),Undirected,837,,2
+Russia,Spain,Undirected,838,,2
+Russia,Ukraine (occupied Crimea),Undirected,839,,5
+Russia,Italy,Undirected,841,,4
+Russia,China,Undirected,845,,1
+Poland,Austria,Undirected,852,,1
+Poland,South Africa,Undirected,853,,1
+Poland,Russia,Undirected,854,,2
+Poland,Belarus,Undirected,855,,1
+Poland,Romania,Undirected,856,,1
+Poland,Croatia,Undirected,857,,1
+Poland,Estonia,Undirected,858,,1
+Poland,Armenia,Undirected,859,,1
+Poland,Czechia,Undirected,860,,1
+Poland,Greece,Undirected,861,,1
+Poland,Serbia,Undirected,862,,1
+Ukraine,Switzerland,Undirected,863,,1
+Denmark,Italy,Undirected,864,,2
+Denmark,Ukraine,Undirected,865,,2
+Denmark,USA,Undirected,866,,2
+Denmark,Croatia,Undirected,867,,2
+Denmark,Serbia,Undirected,868,,2
+Denmark,Germany,Undirected,872,,1
+Russia,Belgium,Undirected,876,,1
+Ukraine,Germany,Undirected,880,,1
