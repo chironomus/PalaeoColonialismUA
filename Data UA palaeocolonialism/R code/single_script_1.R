@@ -19,7 +19,7 @@ library(codyn)
 library(forcats)   # For fct_lump
 library(circlize)
 require(RColorBrewer)
-
+library(tidyverse)
 ##############################################
 # Load dataset
 #############################################
@@ -723,3 +723,4 @@ network_plot <- network_res$plot
 
 # Access centrality table
 centrality_table <- network_res$centrality
+
