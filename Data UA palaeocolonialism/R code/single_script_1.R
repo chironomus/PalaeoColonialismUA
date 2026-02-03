@@ -468,6 +468,54 @@ order=ggplot(df_order_filtered,
 grid.arrange(class, order, ncol = 2)
 
 ########################################################
+########################################################
+#Percentage of charistmatic taxa studied per country
+# Clean & filter for Russia + Ukraine
+df_clean <- df_order_filtered %>%
+  mutate(
+    Country = str_trim(Countries),
+    Order   = str_trim(Order),
+    Country = case_when(
+      str_detect(Countries, "Ukraine") ~ "Ukraine",
+      str_detect(Countries, "Russia")  ~ "Russia",
+      TRUE ~ Countries
+    )
+  ) %>%
+  filter(Country %in% c("Russia", "Ukraine"))
+
+# Aggregate counts per country × order
+df_sum <- df_clean %>%
+  group_by(Countries, Order) %>%
+  summarise(count = sum(count), .groups = "drop")
+
+#Keep top 5 orders per country
+df_top5 <- df_sum %>%
+  group_by(Countries) %>%
+  slice_max(order_by = count, n = 5) %>%
+  ungroup()
+
+#Compute percentages for labels
+df_top5 <- df_top5 %>%
+  group_by(Countries) %>%
+  mutate(pct = count / sum(count) * 100,
+         Order = fct_reorder(Order, count)) %>%
+  ungroup()
+
+# Plot pie charts with percentages
+ggplot(df_top5, aes(x = "", y = pct, fill = Order)) +
+  geom_col(width = 1, color = "white") +
+  coord_polar(theta = "y") +
+  facet_wrap(~ Countries, scales = "free") +
+  geom_text(aes(label = paste0(round(pct,1), "%")),
+            position = position_stack(vjust = 0.5), size = 3) +
+  theme_void() +
+  labs(
+    title = "Top 5 Orders per Country",
+    fill = "Order"
+  )
+
+
+########################################################
 #pie charts of post 2014 specimens distribution by collection
 
 
@@ -723,4 +771,5 @@ network_plot <- network_res$plot
 
 # Access centrality table
 centrality_table <- network_res$centrality
+
 
